@@ -12,10 +12,12 @@ int main() {
     const int size = 64;
     int arr[size];
     
-    char path[] = "bubble.csv";
+    char path[] = "Unsorted.csv";
+    char path2[] = "Sorted.csv";
 
-    fstream file;                                                       
-        file.open(path, fstream::trunc | fstream::in | fstream::out);                                  
+    fstream file, sort;                                                       
+        file.open(path, fstream::trunc | fstream::in | fstream::out);      
+        sort.open(path2, fstream::trunc | fstream::in | fstream::out);                             
 
         if (!file.is_open())
         {
@@ -27,10 +29,8 @@ int main() {
                 for (int i = 0; i < size; i++) 
                 {   
                     arr[i] = rand() % 100;
-                    file << arr[i] << ";";
+                    file << arr[i] << "\n";
                 }
-
-                file << "\n";
 
                 for (int i = 0; i < size; i++) 
                 {
@@ -48,7 +48,7 @@ int main() {
 
                 for (int i = 0; i < size; i++) 
                 {
-                    file  << arr[i] << ";";
+                    sort << arr[i] << "\n";
                 }
 
                 cout << "Данные в файле!";
