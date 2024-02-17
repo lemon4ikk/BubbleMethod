@@ -55,6 +55,7 @@ int main() {
         }
             
         file.close();
+        sort.close();
 
     return 0;
 }
