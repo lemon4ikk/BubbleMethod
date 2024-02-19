@@ -1,25 +1,25 @@
+#include <stdlib.h>
 #include <iostream>
 #include <fstream>
-#include <ctime>
 
 using namespace std;
 
 int main() {
     setlocale(LC_ALL, "ru");
 
-    srand(time(NULL));
+    srand(1234);
 
     const int size = 64;
     int arr[size];
     
-    char path[] = "Unsorted.csv";
-    char path2[] = "Sorted.csv";
+    char path_unsorted[] = "Unsorted.csv";
+    char path_sorted[] = "Sorted.csv";
 
-    fstream file, sort;                                                       
-        file.open(path, fstream::trunc | fstream::in | fstream::out);      
-        sort.open(path2, fstream::trunc | fstream::in | fstream::out);                             
+    fstream unsorted, sorted;                                                       
+        unsorted.open(path_unsorted, fstream::trunc | fstream::in | fstream::out);      
+        sorted.open(path_sorted, fstream::trunc | fstream::in | fstream::out);                             
 
-        if (!file.is_open())
+        if (!unsorted.is_open())
         {
             cout << "Ошибка открытия файла!" << endl;
         }                                                               
@@ -29,7 +29,7 @@ int main() {
                 for (int i = 0; i < size; i++) 
                 {   
                     arr[i] = rand() % 100;
-                    file << arr[i] << "\n";
+                    unsorted << arr[i] << "\n";
                 }
 
                 for (int i = 0; i < size; i++) 
@@ -48,14 +48,14 @@ int main() {
 
                 for (int i = 0; i < size; i++) 
                 {
-                    sort << arr[i] << "\n";
+                    sorted << arr[i] << "\n";
                 }
 
                 cout << "Данные в файле!";
         }
             
-        file.close();
-        sort.close();
+        unsorted.close();
+        sorted.close();
 
     return 0;
 }
